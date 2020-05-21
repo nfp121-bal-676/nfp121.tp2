@@ -6,15 +6,15 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class IHMFahrenheit extends JFrame implements ActionListener{
-  private JTextField entree = new JTextField( 6 );
+  private JTextField entree = new JTextField( 10 );
   /** Le bouton de conversion. */
   private JButton  boutonDeConversion = new JButton( "convertir" );
   /** La sortie en degré Celsius. */
-  private JTextField sortie = new JTextField( 6 );
+  private JTextField sortie = new JTextField( 10 );
 
   public IHMFahrenheit(){
     super("IHM Fahrenheit");
- 
+    setPreferredSize(new Dimension(400,100));
     setLayout(new FlowLayout());
     add( entree ); add( boutonDeConversion ); add( sortie );
     sortie.setEditable( false );
@@ -32,11 +32,13 @@ public class IHMFahrenheit extends JFrame implements ActionListener{
    */
   public void actionPerformed( ActionEvent ae ){
     try{
-      int fahrenheit = 0; // valeur est une String et doit être convertie en entier, voir java.lang.Integer méthode parseInt (--> try/catch)
-      float celsius = 0F; // à compléter, en appelant la méthode ad'hoc de la question2 
+      int fahrenheit = Integer.parseInt(entree.getText()); // valeur est une String et doit être convertie en entier, voir java.lang.Integer méthode parseInt (--> try/catch)
+      float celsius = question2.FahrenheitCelsius.fahrenheitEnCelsius(fahrenheit); // à compléter, en appelant la méthode ad'hoc de la question2 
       // un test ici pour le zéro absolu (-273.1)
-
-      sortie.setText( Float.toString( celsius));
+      if (celsius < -273.1) {
+          celsius = -273.1f;
+      }
+    sortie.setText(Float.toString(celsius));
     }catch(NumberFormatException nfe){
       sortie.setText("error ! ");
     }

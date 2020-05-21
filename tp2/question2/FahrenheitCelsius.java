@@ -1,12 +1,14 @@
 package question2;
 
 
-/**
- * Décrivez votre classe FahrenheitCelsius ici.
- * 
- * @author (votre nom) 
- * @version (un numéro de version ou une date)
- */
+         /**
+         * Décrivez votre classe FahrenheitCelsius ici.
+         * 
+         * @author (Rami TOFEILY)
+         * @version (0.0.1)
+         */
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 public class FahrenheitCelsius{
 
      /** le point d'entrée de cette application, 
@@ -15,12 +17,20 @@ public class FahrenheitCelsius{
       *  @param args ...
       */
      public static void main(String[] args){
-       try{
-       
+           int fahrenheit = 0;
+            float celsius = 0;
+            DecimalFormat df = new DecimalFormat("#.#");
+            df.setRoundingMode(RoundingMode.DOWN);
+            for (int index = 0; index< args.length; index++){
+                try {
+                    celsius = fahrenheitEnCelsius(Integer.parseInt(args[index]));
+                    System.out.println(fahrenheit + "\u00B0F -> " + df.format(celsius) + "\u00B0C");
+                } catch(NumberFormatException nfe){
+                    System.out.println("error : " + nfe.getMessage()); 
+                }    
+            }   
       
-       }catch(NumberFormatException nfe){
-           System.out.println("error : " + nfe.getMessage());  // en cas d'erreur 
-       }
+      
        
      }
      
@@ -30,9 +40,7 @@ public class FahrenheitCelsius{
       *   @return  la conversion en degré Celsius
       */
      public static float fahrenheitEnCelsius( int f){
-       // ...
-       return 0.F;	// à compléter	en remplaçant la valeur retournée par la fonction de conversion
-       // ...
-     }
+       return 5 / 9.0f * (f-32);
+    }
 
 }
