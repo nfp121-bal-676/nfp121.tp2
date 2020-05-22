@@ -19,12 +19,10 @@ public class FahrenheitCelsius{
      public static void main(String[] args){
            int fahrenheit = 0;
             float celsius = 0;
-            DecimalFormat df = new DecimalFormat("#.#");
-            df.setRoundingMode(RoundingMode.DOWN);
             for (int index = 0; index< args.length; index++){
                 try {
                     celsius = fahrenheitEnCelsius(Integer.parseInt(args[index]));
-                    System.out.println(fahrenheit + "\u00B0F -> " + df.format(celsius) + "\u00B0C");
+                    System.out.println(fahrenheit + "\u00B0F -> " + ((int)(celsius*10)/10.0) + "\u00B0C");
                 } catch(NumberFormatException nfe){
                     System.out.println("error : " + nfe.getMessage()); 
                 }    
