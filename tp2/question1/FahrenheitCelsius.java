@@ -25,7 +25,7 @@
             df.setRoundingMode(RoundingMode.DOWN);
             for (int index = 0; index< args.length; index++){
                 celsius = fahrenheitEnCelsius(Integer.parseInt(args[index]));
-                System.out.println(fahrenheit + "\u00B0F -> " + df.format(celsius) + "\u00B0C");
+                System.out.println(fahrenheit + "\u00B0F -> " + ((int)(celsius*10)/10.0) + "\u00B0C");
             }              
                                                                                 
     }
